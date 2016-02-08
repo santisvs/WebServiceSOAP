@@ -23,7 +23,7 @@ public class Manolo {
 	private void iniciarRepertorio() {
 		Cancion c = new Cancion();
 		c.setCodigo(0);
-		c.setTitulo("oe eoeoe oeoeeo ee. Egpaña!!!!");
+		c.setTitulo("oe eoeoe oeoeeo ee. España!!!!");
 		repertorio.add(c);
 
 		c = new Cancion();
@@ -33,7 +33,7 @@ public class Manolo {
 
 		c = new Cancion();
 		c.setCodigo(2);
-		c.setTitulo("Messi seleccion");
+		c.setTitulo("Raul seleccion");
 		repertorio.add(c);
 
 		c = new Cancion();
