@@ -1,0 +1,40 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ManoloService WSDL service -->
+
+  <service name="Manolo" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://manolo.com"/>
+      <parameter name="wsdlServiceElement" value="ManoloService"/>
+      <parameter name="schemaQualified" value="http://manolo.com"/>
+      <parameter name="wsdlServicePort" value="Manolo"/>
+      <parameter name="className" value="com.manolo.ManoloSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Manolo"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="canta" qname="operNS:canta" xmlns:operNS="http://manolo.com" returnQName="retNS:cantaReturn" xmlns:retNS="http://manolo.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="repertorio" qname="operNS:repertorio" xmlns:operNS="http://manolo.com" returnQName="retNS:repertorioReturn" xmlns:retNS="http://manolo.com" returnType="rtns:Cancion" xmlns:rtns="http://manolo.com" soapAction="" >
+      </operation>
+      <operation name="cancionActual" qname="operNS:cancionActual" xmlns:operNS="http://manolo.com" returnQName="retNS:cancionActualReturn" xmlns:retNS="http://manolo.com" returnType="rtns:Cancion" xmlns:rtns="http://manolo.com" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="canta cancionActual repertorio"/>
+
+      <typeMapping
+        xmlns:ns="http://manolo.com"
+        qname="ns:Cancion"
+        type="java:com.manolo.Cancion"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

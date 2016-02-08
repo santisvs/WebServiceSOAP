@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://manolo.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manolo.com" xmlns:intf="http://manolo.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://manolo.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="canta">
+    <complexType/>
+   </element>
+   <element name="cantaResponse">
+    <complexType>
+     <sequence>
+      <element name="cantaReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="repertorio">
+    <complexType/>
+   </element>
+   <element name="repertorioResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="repertorioReturn" type="impl:Cancion"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Cancion">
+    <sequence>
+     <element name="codigo" type="xsd:int"/>
+     <element name="titulo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="cancionActual">
+    <complexType/>
+   </element>
+   <element name="cancionActualResponse">
+    <complexType>
+     <sequence>
+      <element name="cancionActualReturn" type="impl:Cancion"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="cancionActualResponse">
+
+      <wsdl:part element="impl:cancionActualResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantaResponse">
+
+      <wsdl:part element="impl:cantaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="repertorioResponse">
+
+      <wsdl:part element="impl:repertorioResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cantaRequest">
+
+      <wsdl:part element="impl:canta" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancionActualRequest">
+
+      <wsdl:part element="impl:cancionActual" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="repertorioRequest">
+
+      <wsdl:part element="impl:repertorio" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Manolo">
+
+      <wsdl:operation name="canta">
+
+         <wsdl:input message="impl:cantaRequest" name="cantaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cantaResponse" name="cantaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="repertorio">
+
+         <wsdl:input message="impl:repertorioRequest" name="repertorioRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:repertorioResponse" name="repertorioResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancionActual">
+
+         <wsdl:input message="impl:cancionActualRequest" name="cancionActualRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cancionActualResponse" name="cancionActualResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ManoloSoapBinding" type="impl:Manolo">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="canta">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cantaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cantaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="repertorio">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="repertorioRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="repertorioResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancionActual">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cancionActualRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cancionActualResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ManoloService">
+
+      <wsdl:port binding="impl:ManoloSoapBinding" name="Manolo">
+
+         <wsdlsoap:address location="http://localhost:8080/ManoloBomboWS/services/Manolo"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

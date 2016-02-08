@@ -9,10 +9,10 @@ public class Cancion implements Serializable {
 	private String titulo;
 	private int codigo;
 
-	public Cancion(String titulo) {
+	public Cancion() {
 		super();
 		this.codigo = -1;
-		this.titulo = titulo;
+		this.titulo = "";
 	}
 
 	public String getTitulo() {
